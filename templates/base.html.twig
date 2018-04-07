@@ -1,0 +1,69 @@
+{% extends "MopaBootstrapBundle::layout.html.twig" %}
+{% from 'MopaBootstrapBundle::flash.html.twig' import session_flash %}
+
+{% block title %}Talan{% endblock %}
+
+{% block head_style %}
+    {% stylesheets
+       	'@MopaBootstrapBundle/Resources/public/less/mopabootstrapbundle.less'
+       	'@MopaBootstrapBundle/Resources/public/less/bootstrap-fontawesome.less'
+       	
+       	'@StageUserBundle/Resources/public/css/select2.css'
+       	'@StageToolboxBundle/Resources/public/css/style.css'
+    %}
+       
+    	<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock head_style %}
+
+{% block body %}   
+
+	{% block navbar %}
+	 	{% include '::navbar.html.twig' %} 
+	{% endblock navbar %}
+    	
+	{% block container %}
+	    <div id="main" class="container-fluid">
+		 <div class="row">
+		  {% block sidebar %}
+		  	{% include '::sidebar.html.twig' %} 
+	      {% endblock sidebar %}
+	      
+	      <div id="content" class="col-xs-12 col-sm-10">
+				
+				<div id="ajax-content">
+					{% block content %}
+		 	
+	            	{% endblock content %}
+				</div>
+		  </div>
+	     </div>
+	    </div>
+	{% endblock container %}
+       
+        {% block footer %}
+    	
+        {% endblock footer %}
+   
+    
+        {% block foot_script %}
+        {% javascripts'@StageUserBundle/Resources/public/js/jquery-2.1.0.min.js'
+            '@StageUserBundle/Resources/public/js/jquery-ui.min.js'
+            '@StageUserBundle/Resources/public/js/bootstrap.min.js'
+            '@StageUserBundle/Resources/public/js/function.js'
+            '@StageUserBundle/Resources/public/js/raphael-min.js'
+            '@StageUserBundle/Resources/public/js/select2.min.js'
+            '@StageUserBundle/Resources/public/js/jquery.dataTables.js'
+            '@StageUserBundle/Resources/public/js/ZeroClipboard.js'
+            '@StageUserBundle/Resources/public/js/TableTools.js'
+            '@StageUserBundle/Resources/public/js/dataTables.bootstrap.js'
+            '@StageUserBundle/Resources/public/js/function.js'
+        %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        
+        {% endjavascripts %}
+
+    {% endblock foot_script %}
+
+    
+{% endblock body %}
